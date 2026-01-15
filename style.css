@@ -1,0 +1,426 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* 头部 */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+/* 通用区块样式 */
+section {
+    padding: 30px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+section h2 {
+    font-size: 20px;
+    color: #374151;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* 按钮通用样式 */
+.btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #2563eb;
+}
+
+.btn-success {
+    background: #10b981;
+    color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: #059669;
+}
+
+.btn-danger {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #dc2626;
+}
+
+.btn-attend {
+    background: #10b981;
+    color: white;
+    flex: 1;
+}
+
+.btn-attend:hover:not(:disabled) {
+    background: #059669;
+}
+
+.btn-late {
+    background: #f59e0b;
+    color: white;
+    flex: 1;
+}
+
+.btn-late:hover:not(:disabled) {
+    background: #d97706;
+}
+
+.btn-absent {
+    background: #ef4444;
+    color: white;
+    flex: 1;
+}
+
+.btn-absent:hover:not(:disabled) {
+    background: #dc2626;
+}
+
+/* A. 名单导入区 */
+.import-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.message {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.message.success {
+    color: #10b981;
+}
+
+.message.error {
+    color: #ef4444;
+}
+
+/* B. 点名控制区 */
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 8px;
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+}
+
+.stat-label {
+    display: block;
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    color: #374151;
+}
+
+.mode-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.mode-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.mode-controls input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.rollcall-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.current-student {
+    margin-top: 30px;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.student-name {
+    font-size: 48px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* 随机点名动画效果 */
+.student-name.animating {
+    animation: randomRoll 0.1s ease-in-out infinite;
+}
+
+@keyframes randomRoll {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.attendance-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* C. 记录管理区 */
+.date-filter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.date-filter label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.date-filter input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.date-filter input[type="date"]:focus {
+    border-color: #3b82f6;
+}
+
+.filter-info {
+    font-size: 14px;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.record-controls {
+    display: flex;
+    gap: 15px;
+}
+
+/* D. 记录展示区 */
+.records-list {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.empty-message {
+    text-align: center;
+    color: #9ca3af;
+    font-size: 14px;
+    padding: 40px;
+}
+
+.record-item {
+    padding: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+
+.record-item:hover {
+    background: #f9fafb;
+}
+
+.record-item:last-child {
+    border-bottom: none;
+}
+
+.record-info {
+    flex: 1;
+}
+
+.record-time {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 5px;
+}
+
+.record-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+}
+
+.record-status {
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-出勤 {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-迟到 {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-缺勤 {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* 滚动条样式 */
+.records-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.records-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.records-list::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 4px;
+}
+
+.records-list::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        border-radius: 8px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .student-name {
+        font-size: 28px;
+    }
+
+    .attendance-buttons {
+        flex-direction: column;
+    }
+
+    .date-filter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .record-controls {
+        flex-direction: column;
+    }
+}

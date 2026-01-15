@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂点名器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>课堂点名器</h1>
+        </header>
+
+        <!-- A. 名单导入区 -->
+        <section class="import-section">
+            <h2>名单导入</h2>
+            <div class="import-controls">
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+                <button id="importBtn" class="btn btn-primary">导入 CSV</button>
+                <span id="importMessage" class="message"></span>
+            </div>
+        </section>
+
+        <!-- B. 点名控制区 -->
+        <section class="rollcall-section">
+            <h2>点名控制</h2>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">总学生数:</span>
+                    <span id="totalCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">已点名:</span>
+                    <span id="calledCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">未点名:</span>
+                    <span id="remainingCount" class="stat-value">0</span>
+                </div>
+            </div>
+
+            <div class="mode-controls">
+                <label>
+                    <input type="radio" name="mode" value="random" checked>
+                    <span>随机</span>
+                </label>
+                <label>
+                    <input type="radio" name="mode" value="sequential">
+                    <span>顺序</span>
+                </label>
+            </div>
+
+            <div class="rollcall-controls">
+                <button id="startBtn" class="btn btn-success" disabled>开始点名</button>
+                <button id="stopBtn" class="btn btn-danger" disabled>停止点名</button>
+            </div>
+
+            <div id="currentStudentDisplay" class="current-student">
+                <div class="student-name"></div>
+                <div class="attendance-buttons">
+                    <button id="attendBtn" class="btn btn-attend" disabled>出勤</button>
+                    <button id="lateBtn" class="btn btn-late" disabled>迟到</button>
+                    <button id="absentBtn" class="btn btn-absent" disabled>缺勤</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- C. 记录管理区 -->
+        <section class="records-section">
+            <h2>记录管理</h2>
+
+            <div class="date-filter">
+                <label>
+                    开始日期:
+                    <input type="date" id="startDate">
+                </label>
+                <label>
+                    结束日期:
+                    <input type="date" id="endDate">
+                </label>
+                <span id="filterCount" class="filter-info"></span>
+            </div>
+
+            <div class="record-controls">
+                <button id="exportBtn" class="btn btn-primary">导出 CSV 记录</button>
+                <button id="clearBtn" class="btn btn-danger">清除所有记录</button>
+            </div>
+        </section>
+
+        <!-- D. 记录展示区 -->
+        <section class="display-section">
+            <h2>最近记录</h2>
+            <div id="recordsList" class="records-list">
+                <p class="empty-message">暂无记录</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
